@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FiMenu, FiX } from 'react-icons/fi';
+import ConnectWalletButton from '../wallet/ConnectWalletButton';
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -39,11 +40,7 @@ function Navbar() {
                 <span className="absolute inset-x-0 bottom-0 h-0.5 bg-gradient-to-r from-primary-500 to-primary-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
               </Link>
             ))}
-            <button
-              className="btn"
-            >
-              Connect
-            </button>
+            <ConnectWalletButton label="Connect Wallet" />
           </div>
 
           {/* Mobile menu button */}
@@ -52,6 +49,7 @@ function Navbar() {
               type="button"
               className="text-secondary-600 hover:text-primary-600"
               onClick={() => setIsOpen(!isOpen)}
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
             >
               {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
             </button>
@@ -72,12 +70,13 @@ function Navbar() {
                   {item.name}
                 </Link>
               ))}
-              <button
-                className="block mx-2 mt-2 px-3 py-2 text-base font-medium btn w-auto"
-                onClick={() => setIsOpen(false)}
-              >
-                Connect
-              </button>
+              <div className="mx-2 mt-2 mb-2">
+                <ConnectWalletButton
+                  variant="full"
+                  label="Connect Wallet"
+                  onConnected={() => setIsOpen(false)}
+                />
+              </div>
             </div>
           </div>
         )}

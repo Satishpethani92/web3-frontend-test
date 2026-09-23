@@ -1,8 +1,10 @@
 import { atom, useAtom } from "jotai";
 import { useEffect, useState } from "react";
 import { scenes } from "./Experience";
-import { FaWallet } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import ConnectWalletButton from "../wallet/ConnectWalletButton";
+import { useWallet } from "../../context/WalletContext";
+import { truncateAddress } from "../../utils/wallet";
 
 export const slideAtom = atom(0);
 
@@ -10,6 +12,7 @@ export const Overlay = () => {
   const [slide, setSlide] = useAtom(slideAtom);
   const [displaySlide, setDisplaySlide] = useState(slide);
   const [visible, setVisible] = useState(false);
+  const { isConnected, account } = useWallet();
   useEffect(() => {
     setTimeout(() => {
       setVisible(true);
@@ -71,10 +74,18 @@ export const Overlay = () => {
               <p className="text-xs opacity-80">Valuation</p>
             </div>
           </div>
-          <button className="btn w-full lg:w-1/2 mt-6 flex items-center justify-center text-xl">
-            <FaWallet className="mr-2" />
-            Invest
-          </button>
+          <div className="w-full lg:w-1/2 mt-6 pointer-events-auto">
+            <ConnectWalletButton
+              variant="full"
+              className="text-xl"
+              label="Connect to Invest"
+              connectedLabel={
+                isConnected && account
+                  ? `Invest · ${truncateAddress(account)}`
+                  : undefined
+              }
+            />
+          </div>
         </div>
       </div>
     </>
