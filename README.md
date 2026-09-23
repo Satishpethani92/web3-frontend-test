@@ -99,15 +99,15 @@ Your submission will be evaluated based on:
 
 ## Checklist
 
-* [ ] MetaMask integration implemented
-* [ ] Connect Wallet functionality working
-* [ ] Wallet address displayed
-* [ ] Account changes handled automatically
-* [ ] Error handling implemented
-* [ ] Existing functionality preserved
-* [ ] Code pushed to GitHub
-* [ ] Demo video recorded
-* [ ] GitHub and video links submitted
+* [x] MetaMask integration implemented
+* [x] Connect Wallet functionality working
+* [x] Wallet address displayed
+* [x] Account changes handled automatically
+* [x] Error handling implemented
+* [x] Existing functionality preserved
+* [x] Code pushed to GitHub
+* [x] Demo video recorded
+* [x] GitHub and video links submitted
 
 ---
 
